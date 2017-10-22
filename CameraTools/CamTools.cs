@@ -1138,12 +1138,11 @@ namespace CameraTools
 			hasDied = false;
 		    if (FlightGlobals.ActiveVessel != null && HighLogic.LoadedScene == GameScenes.FLIGHT)
 		    {
-                //flightCamera.SetTargetTransform(FlightGlobals.ActiveVessel.transform);
-                flightCamera.SetTarget(FlightGlobals.ActiveVessel.transform, FlightCamera.TargetMode.Transform);
+                flightCamera.SetTarget(FlightGlobals.ActiveVessel.transform, FlightCamera.TargetMode.Vessel);
             }
             flightCamera.transform.parent = origParent;
             flightCamera.transform.position = origPosition;
-			flightCamera.transform.rotation = origRotation;
+            flightCamera.transform.rotation = origRotation;
             Camera.main.nearClipPlane = origNearClip;
 
 			flightCamera.SetFoV(60);
@@ -1967,7 +1966,7 @@ namespace CameraTools
 			foreach(var assy in AssemblyLoader.loadedAssemblies)
 			{
 				//Debug.Log("- "+assy.assembly.FullName);
-				if(assy.assembly.FullName.Contains("BahaTurret,"))
+				if(assy.assembly.FullName.Contains("BDArmory"))
 				{
 					foreach(var t in assy.assembly.GetTypes())
 					{
